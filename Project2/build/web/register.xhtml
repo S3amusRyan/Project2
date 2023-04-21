@@ -33,13 +33,14 @@
 			<h:commandButton action="#{registerView.register}" value="Register"></h:commandButton>
                         <h:selectOneMenu value="#{registerView.userType}">
                             <f:selectItem itemValue="1" itemLabel="job provider" />
-                            <f:selectItem itemValue="2" itemLabel="freelancer" />                   
+                            <f:selectItem itemValue="2" itemLabel="freelancer" />
+                            <f:selectItem itemValue="3" itemLabel="Admin" />
                         </h:selectOneMenu>
 		</h:panelGrid>
 
 	</h:form>
 	
 	<br/><br/>
-	<h:link value="Admin Home Page" outcome="adminpage" />
+	<h:link value="Admin Home Page" outcome="admin/adminpage" />
 </h:body>
 </html>

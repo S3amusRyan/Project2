@@ -5,22 +5,20 @@
 	<title>login</title>
 </h:head>
 <h:body>
-
 	<h:form>
-		<h3>Please Sign In</h3>
+		<h3>Sign in</h3>
 		<h:panelGrid columns="2">
                               
-                        <h:commandButton value="Register" action="admin/register.xhtml"/><h:outputText/>
-                    
-			<h:outputLabel for="email">E-Mail:</h:outputLabel>
-			<h:inputText id="email" value="#{loginView.email}" required="true" requiredMessage="Please enter your e-mail address"></h:inputText>
+                    <h:outputLabel for="email">E-Mail:</h:outputLabel>
+                    <h:inputText id="email" value="#{loginView.email}"></h:inputText>
 
-			<h:outputLabel for="password">Password:</h:outputLabel>
-			<h:inputSecret id="password" value="#{loginView.password}" required="true" requiredMessage="Please enter password"></h:inputSecret>
-                        <br></br>
-			<h:commandButton action="#{loginView.login}" value="Login"></h:commandButton>
-
-                        
+                    <h:outputLabel for="password">Password:</h:outputLabel>
+                    <h:inputSecret id="password" value="#{loginView.password}"></h:inputSecret>
+                    <br></br>
+                    <h:commandButton action="#{loginView.login}" value="Login"></h:commandButton>
+                    <br></br>
+                    <br></br>
+                    <h:commandButton value="Home" action="index.xhtml"/><h:outputText/>
 		</h:panelGrid>
 	</h:form>
 </h:body>
