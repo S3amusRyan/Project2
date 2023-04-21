@@ -7,12 +7,10 @@ import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import jakarta.inject.Inject;
-import java.util.logging.Logger;
 
 @Named(value = "createJobsBean")
 @SessionScoped
 public class CreateJobsBean implements Serializable {
-    private static Logger log = Logger.getLogger(CreateJobsBean.class.getName());
     
     @Inject
     private JobEJB jobejb;

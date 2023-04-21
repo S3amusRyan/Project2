@@ -1,7 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
 		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core" >
+		xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:s="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
 <h:head>
 	<title>register</title>
 </h:head>
@@ -31,16 +33,15 @@
 			<h:inputSecret id="confirmpassword" value="#{registerView.confirmPassword}" required="true" requiredMessage="Please confirm your password"></h:inputSecret>
 
 			<h:commandButton action="#{registerView.register}" value="Register"></h:commandButton>
+
                         <h:selectOneMenu value="#{registerView.userType}">
                             <f:selectItem itemValue="1" itemLabel="job provider" />
                             <f:selectItem itemValue="2" itemLabel="freelancer" />
                             <f:selectItem itemValue="3" itemLabel="Admin" />
                         </h:selectOneMenu>
+
 		</h:panelGrid>
 
 	</h:form>
-	
-	<br/><br/>
-	<h:link value="Admin Home Page" outcome="admin/adminpage" />
 </h:body>
 </html>

@@ -8,7 +8,6 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import jakarta.inject.Inject;
 import java.util.List;
-import java.util.logging.Logger;
 import jakarta.inject.Named;
 import jakarta.annotation.Resource;
 
@@ -18,7 +17,6 @@ import jakarta.annotation.Resource;
 public class SearchJobsBeans implements Serializable {
     
     private static final long serialVersionUID = 4685823449195612778L;
-    private static Logger log = Logger.getLogger(SearchJobsBeans.class.getName());
     
     @Inject
     private JobEJB jobEJB;

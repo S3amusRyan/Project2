@@ -2,8 +2,6 @@ package managedbeans;
 
 import java.io.Serializable;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jakarta.faces.application.FacesMessage;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.ExternalContext;
@@ -18,7 +16,6 @@ import entity.Provider;
 import entity.User;
 import jakarta.inject.Named;
 import utils.AuthenticationUtils;
-import utils.LogFile;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
@@ -28,7 +25,6 @@ public class LoginView implements Serializable {
 
 	private static final long serialVersionUID = 3254181235309041386L;
         
-	private static Logger log = Logger.getLogger(LoginView.class.getName());
 
 	@Inject
 	private UserEJB userEJB;
@@ -56,11 +52,8 @@ public class LoginView implements Serializable {
                 
                 if( this.user == null ){
                     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "No user with that email exists. Try again.", null));
-                    userEJB.logMessage("USER <" + email + "> FAILED LOGIN (USER DOES NOT EXIST)");
                     // clear the session
                     ((HttpSession) context.getExternalContext().getSession(false)).invalidate();
-                    // log login try
-                    LogFile.LoginLog(String.format("Email not Found: %s", email));
                     return "signin";
                 }
                 
@@ -69,7 +62,6 @@ public class LoginView implements Serializable {
                     //System.out.println(this.user.getPassword());
                     if (!this.user.getPassword().equals(AuthenticationUtils.encodeSHA256(password))){
                         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Incorrect password. Try again.", null));
-                        userEJB.logMessage("USER <" + user.getEmail() + "> FAILED LOGIN (INCORRECT PASSWORD)");
                         // clear the session
                         ((HttpSession) context.getExternalContext().getSession(false)).invalidate();
                         tries++;
@@ -84,7 +76,6 @@ public class LoginView implements Serializable {
                 tries = 0;
                 
                 System.out.println("Logged in user: " + user.getName() + " (" + user.getEmail() + ")");
-                userEJB.logMessage("USER <" + user.getEmail() + "> LOGGED IN CORRECTLY");
                 
                 ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
@@ -115,7 +106,6 @@ public class LoginView implements Serializable {
                 FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		try {
-                        userEJB.logMessage("USER LOGGED OUT");
 			this.user = null;
 			request.logout();
 			// clear the session
@@ -124,7 +114,6 @@ public class LoginView implements Serializable {
                             ((HttpSession) context.getExternalContext().getSession(false)).invalidate();
                         }
 		} catch (ServletException e) {
-			log.log(Level.SEVERE, "Failed to logout user!", e);
 		}
 		return "/signin?faces-redirect=true";
 	}
@@ -133,7 +122,6 @@ public class LoginView implements Serializable {
             if(userEJB.findUserById(User.getDEF_ADMIN_EMAIL())==null){
                 User user = new User(User.getDEF_ADMIN_EMAIL(), User.getDEF_PWD(), User.getDEF_NAME());
                 userEJB.createUser(user, "3");
-                log.info("Administrator created.");
             }
         }   
         

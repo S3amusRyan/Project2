@@ -1,7 +1,6 @@
 package managedbeans;
 
 import java.io.Serializable;
-import java.util.logging.Logger;
 import jakarta.faces.application.FacesMessage;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.component.UIComponent;
@@ -19,7 +18,6 @@ public class RegisterView implements Serializable {
 
 	private static final long serialVersionUID = 1685823449195612778L;
 
-	private static Logger log = Logger.getLogger(RegisterView.class.getName());
 
 	@Inject
 	private UserEJB userEJB;
@@ -75,8 +73,6 @@ public class RegisterView implements Serializable {
                  */
 		User user = new User(email, password, name);
 		userEJB.createUser(user, userType);
-		log.info("New user created with e-mail: " + email + " and name: " + name);
-                userEJB.logMessage("NEW USER CREATED: <" + email + ">");
 		return "regdone";
 	}
 

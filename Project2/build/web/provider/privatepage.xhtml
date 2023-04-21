@@ -80,9 +80,12 @@
                 
                 <h:column>
                         <f:facet name="header">Delete</f:facet>
-                        <h:commandButton value="Delete">
+                        <h:commandButton value="Delete" 
+                                         action="#{removeView.removeJobDescriptions(Job)}">
                         </h:commandButton>
+                    
                 </h:column>
+
                 
             </h:dataTable>
             <br/><br/>

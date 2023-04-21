@@ -1,11 +1,8 @@
 package ejb;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import entity.Log;
 import entity.Jobs;
 import entity.Group;
 import entity.Provider;
@@ -40,7 +37,6 @@ public class UserEJB {
             try {
                     user.setPassword(AuthenticationUtils.encodeSHA256(user.getPassword()));
             } catch (Exception e) {
-                    Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
                     e.printStackTrace();
             }
 
@@ -156,14 +152,6 @@ public class UserEJB {
         em.persist(object);
     }
     
-    public void logMessage(String message) {
-        /**
-         *  Logs a message into the database
-         *  @param String message
-         */
-        Log newLog = new Log(message);
-        persist(newLog);
-    }
     
     public void remove(User user) {
         /**

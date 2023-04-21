@@ -13,7 +13,6 @@ import entity.User;
 import entity.Provider;
 import entity.Jobs;
 import java.util.List;
-import java.util.logging.Logger;
 import jakarta.annotation.Resource;
 import jakarta.inject.Named;
 
@@ -22,8 +21,6 @@ import jakarta.inject.Named;
 public class RemoveView implements Serializable {
     
     private static final long serialVersionUID = 4685823449195612778L;
-    
-    private static Logger log = Logger.getLogger(RemoveView.class.getName());
 
     @Inject
     private UserEJB userEJB;
@@ -60,10 +57,10 @@ public class RemoveView implements Serializable {
     }
     
     public void accept(User user, Jobs jobs) {
-        userEJB.logMessage("User " + user.getEmail() + " accepted job with ID: " + jobs.getJobsId().toString() );
+        //userEJB.logMessage("User " + user.getEmail() + " accepted job with ID: " + jobs.getJobsId().toString() );
     }
     public void revoke(User user, Jobs jobs) {
-        userEJB.logMessage("User " + user.getEmail() + " revoked job with ID: " + jobs.getJobsId().toString() );
+        //userEJB.logMessage("User " + user.getEmail() + " revoked job with ID: " + jobs.getJobsId().toString() );
     }
 
     public String getEmail() {
