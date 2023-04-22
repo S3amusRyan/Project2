@@ -35,6 +35,8 @@ public class Freelancer implements Serializable {
     @Size(max = 255)
     @Column(name = "EMAIL")
     private String email;
+    //@Column(name = "Account")
+    //private Integer account;
 
     public Freelancer() {
     }
@@ -47,7 +49,15 @@ public class Freelancer implements Serializable {
     public Integer getId() {
         return id;
     }
+/*
+    public Integer getAccount() {
+        return account;
+    }
 
+    public void setAccount(Integer account) {
+        this.account = account;
+    }
+*/
     public void setId(Integer id) {
         this.id = id;
     }

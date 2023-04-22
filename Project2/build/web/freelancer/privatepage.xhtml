@@ -6,7 +6,10 @@
     <h:head>
         <title>Freelancer Page</title>
     </h:head>
-    <h:body>       
+    <h:body>  
+        <h3>Freelancer Name: #{loginView.authenticatedUser.name}</h3>
+	<p>Your user id is #{loginView.authenticatedUser.email}</p>
+	<p>This is a private page, which requires login to access.</p>
         <h2>List search results for open jobs: </h2>
         <h:form>
             <h:dataTable value="#{searchJobsBeans.findbyStatus()}" var="jobs"
@@ -55,7 +58,7 @@
             <h:outputText value="#{removeView.removeUser(user)}" escape="false"/>
         </h:form>
         
-        <h2>Search keywords for jobs</h2>        
+        <h2>Search by keywords for jobs</h2>        
         <h:form>
             <h:panelGrid columns ="2">
                 <h:inputText value="#{searchJobsBeans.keywords}"/>
@@ -113,10 +116,67 @@
                 <br></br>
             </h:dataTable>
         </h:form>
+        
+        <h2>Search by ID for job</h2>        
+        <h:form>
+            <h:panelGrid columns ="2">
+                <h:inputText value="#{searchJobsBeans.uniqueId}"/>
+                <h:commandButton value="Search"/>
+                <br/>
+            </h:panelGrid>             
+	</h:form>
+        
+        <h:form>
+            <h:dataTable value="#{searchJobsBeans.findbyID()}" var="jobs"
+                         border="1" width="300" cellpadding="5">
+                <h:column>
+                    <f:facet name='header'>ID</f:facet>
+                        #{jobs.jobsId}    
+                </h:column>
 
-	<h3>Freelancer Name: #{loginView.authenticatedUser.name}</h3>
-	<p>Your user id is #{loginView.authenticatedUser.email}</p>
-	<p>This is a private page, which requires login to access.</p>
+                <h:column>
+                    <f:facet name='header'>Title</f:facet>
+                        #{jobs.title}    
+                </h:column>
+
+                <h:column>
+                    <f:facet name='header'>Description</f:facet>
+                        #{jobs.description}    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name='header'>Keywords</f:facet>
+                        #{jobs.keywords}    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name='header'>Payment</f:facet>
+                        #{jobs.payment}    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name='header'>Status</f:facet>
+                        #{jobs.status}    
+                </h:column>
+                
+                <h:column>
+                        <f:facet name="header">Accept</f:facet>
+                        <h:commandButton value="Apply" 
+                                         action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
+                        </h:commandButton>
+                </h:column>
+                
+                <h:column>
+                        <f:facet name="header">Reject</f:facet>
+                        <h:commandButton value="Revoke" 
+                                         action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
+                        </h:commandButton>
+                </h:column>
+                <br></br>
+            </h:dataTable>
+        </h:form>
+
+
         <h:form>
 		<h:commandLink action="#{loginView.logout}" value="Logout" />
 	</h:form>

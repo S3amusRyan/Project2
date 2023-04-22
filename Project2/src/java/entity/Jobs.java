@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Jobs.findAll", query = "SELECT j FROM Jobs j"),
     @NamedQuery(name = "Jobs.findByTitle", query = "SELECT j FROM Jobs j WHERE j.title = :title"),
     @NamedQuery(name = "Jobs.findByKeywords", query = "SELECT j FROM Jobs j WHERE j.keywords = :keywords"),
+    @NamedQuery(name = "Jobs.findByID", query = "SELECT j FROM Jobs j WHERE j.jobsId = :jobsId"),
     @NamedQuery(name = "Jobs.findByStatus", query = "SELECT j FROM Jobs j WHERE j.status = :status"),
     @NamedQuery(name = "Jobs.getJobsID", query = "SELECT MAX(j.jobsId) from Jobs j"),
     @NamedQuery(name = "Jobs.getProviderID", query = "SELECT j FROM Jobs j WHERE j.providerId = :providerId")})

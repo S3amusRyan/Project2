@@ -39,6 +39,24 @@ public class JobEJB {
             return jobs;
     }
     
+        public List<Jobs> findByID(String ID){
+        /*
+            @param Integer ID
+            Find a job inside the database, searching by its ID
+        */
+            TypedQuery<Jobs> query = em.createNamedQuery("Jobs.findByID", Jobs.class);
+            int i = 0;
+            if(ID != null){
+                i = Integer.parseInt(ID);
+            }   
+            query.setParameter("jobsId", i);
+            List<Jobs> jobs = null;
+            try {
+                    jobs = query.getResultList();
+            } catch (Exception e) {}
+            return jobs;
+    }
+    
     
     public List<Jobs> findByStatus(String status){
             /*

@@ -27,10 +27,18 @@ public class SearchJobsBeans implements Serializable {
     private String keywords;
     private int jobsid;
     private String providerId;
+    private String uniqueId;
     
     public List<Jobs> findbyKeyword(){
         List<Jobs> jobs = null;
         jobs = jobEJB.findByKeywords(keywords);
+        return jobs;
+    }
+    
+    public List<Jobs> findbyID(){
+        List<Jobs> jobs = null;
+        System.out.println("TEST");
+        jobs = jobEJB.findByID(uniqueId);
         return jobs;
     }
     
@@ -61,6 +69,16 @@ public class SearchJobsBeans implements Serializable {
         this.keywords = keywords;
     }
 
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
+    
+    
+    
     public String getProviderId() {
         return providerId;
     }

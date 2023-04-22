@@ -6,15 +6,15 @@
         <title>Admin Page</title>
     </h:head>
     <h:body>
-        <h3>Admin Name: #{loginView.authenticatedUser.name}</h3>
-        <p>Your user id is #{loginView.authenticatedUser.email}</p>
+        <h3>Logged into admin account</h3>
+        <br></br>
 	<p>This is a private page, which requires login to access.</p>
         
-        <!-- <h:link value="Create new account" outcome="register" /> -->
-        
-
         <br></br>
+        
         <h:link value="Delete exist account" outcome="remove" />
+        <br></br>
+        <h:link value="Create new account" outcome="adminregister" />
         <h:form>
 		<h:commandLink action="#{loginView.logout}" value="Logout" />
 	</h:form>
