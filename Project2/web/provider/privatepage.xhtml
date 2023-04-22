@@ -40,7 +40,7 @@
         
         <h2>List the Provider's Job descriptions: #{removeView.email} </h2>
         <h:form>
-            <h:dataTable value="#{searchJobsBeans.findbyStatus()}" var="Job"
+            <h:dataTable value="#{searchJobsBeans.findbyStatus('open')}" var="Job"
                          border="1" width="300" cellpadding="5">
 
                 <h:column>

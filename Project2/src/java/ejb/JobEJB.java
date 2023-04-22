@@ -1,10 +1,13 @@
 package ejb;
 import entity.Jobs;
+import entity.Freelancer;
 import java.util.List;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+
+
 
 
 @Stateless
@@ -20,6 +23,22 @@ public class JobEJB {
         persist(job);
         return job;
     }
+    
+public Jobs editJob(Jobs job, String status){//, Freelancer freelancer) {
+    /*
+        @param Jobs job
+        @param String status
+        @param String id
+        edit the status and freelancerid of a job in the database
+    */
+    Jobs updatedJob = em.find(Jobs.class, job.getJobsId());
+    if (updatedJob != null){
+        updatedJob.setStatus(status);
+        //updatedJob.setFreelancerId(freelancer);
+        em.merge(updatedJob);
+    }
+    return updatedJob;
+}
 
     public void persist(Object object) {
         em.persist(object);

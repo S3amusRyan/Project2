@@ -11,10 +11,12 @@ import jakarta.inject.Inject;
 import ejb.UserEJB;
 import entity.User;
 import entity.Provider;
+import entity.Freelancer;
 import entity.Jobs;
 import java.util.List;
 import jakarta.annotation.Resource;
 import jakarta.inject.Named;
+import ejb.JobEJB;
 
 @Named(value = "removeView")
 @SessionScoped
@@ -23,6 +25,7 @@ public class RemoveView implements Serializable {
     private static final long serialVersionUID = 4685823449195612778L;
 
     @Inject
+    private JobEJB jobEJB;
     private UserEJB userEJB;
     
     @Resource
@@ -57,10 +60,12 @@ public class RemoveView implements Serializable {
     }
     
     public void accept(User user, Jobs jobs) {
-        //userEJB.logMessage("User " + user.getEmail() + " accepted job with ID: " + jobs.getJobsId().toString() );
-    }
+        //Freelancer freelancer = userEJB.findFreelancerById(email);
+        jobEJB.editJob(jobs, "closed");//, freelancer );
+    }  
     public void revoke(User user, Jobs jobs) {
-        //userEJB.logMessage("User " + user.getEmail() + " revoked job with ID: " + jobs.getJobsId().toString() );
+        //Freelancer freelancer = userEJB.findFreelancerById(email);
+        jobEJB.editJob(jobs, "open");//, freelancer);
     }
 
     public String getEmail() {

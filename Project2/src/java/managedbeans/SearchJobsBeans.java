@@ -43,9 +43,9 @@ public class SearchJobsBeans implements Serializable {
     }
     
     
-    public List<Jobs> findbyStatus(){
+    public List<Jobs> findbyStatus(String status){
         List<Jobs> jobs = null;
-        jobs =  jobEJB.findByStatus("open");
+        jobs =  jobEJB.findByStatus(status);
         return jobs;
     }
     
