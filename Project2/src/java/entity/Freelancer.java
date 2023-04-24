@@ -21,6 +21,11 @@ import jakarta.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Freelancer.findById", query = "SELECT f FROM Freelancer f WHERE f.id = :id"),
     @NamedQuery(name = "Freelancer.findByName", query = "SELECT f FROM Freelancer f WHERE f.name = :name"),
     @NamedQuery(name = "Freelancer.findByEmail", query = "SELECT f FROM Freelancer f WHERE f.email = :email")})
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class Freelancer implements Serializable {
 
     private static final long serialVersionUID = 1L;

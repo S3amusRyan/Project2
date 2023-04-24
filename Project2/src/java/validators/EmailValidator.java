@@ -9,6 +9,11 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.validator.*;
 
 @FacesValidator("emailValidator")
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class EmailValidator implements Validator {
         /**
          * Email regex validator

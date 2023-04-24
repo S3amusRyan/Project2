@@ -24,6 +24,11 @@ import jakarta.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Provider.findById", query = "SELECT p FROM Provider p WHERE p.id = :id"),
     @NamedQuery(name = "Provider.findByName", query = "SELECT p FROM Provider p WHERE p.name = :name"),
     @NamedQuery(name = "Provider.findByEmail", query = "SELECT p FROM Provider p WHERE p.email = :email")})
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class Provider implements Serializable {
 
     @Size(max = 255)

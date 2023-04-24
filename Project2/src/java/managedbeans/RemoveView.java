@@ -20,6 +20,11 @@ import ejb.JobEJB;
 
 @Named(value = "removeView")
 @SessionScoped
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class RemoveView implements Serializable {
     
     private static final long serialVersionUID = 4685823449195612778L;
@@ -62,10 +67,10 @@ public class RemoveView implements Serializable {
     }
 
     public void accept(User user, Jobs jobs, Freelancer freelancer) {
-        jobEJB.editJob(jobs, "closed", freelancer );
+        jobEJB.changeJob(jobs, "closed", freelancer );
     }
     public void revoke(User user, Jobs jobs, Freelancer freelancer) {
-        jobEJB.editJob(jobs, "open", freelancer);
+        jobEJB.changeJob(jobs, "open", freelancer);
     }
 
     public String getEmail() {

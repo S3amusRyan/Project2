@@ -27,6 +27,11 @@ import jakarta.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Jobs.getJobsID", query = "SELECT MAX(j.jobsId) from Jobs j"),
     @NamedQuery(name = "Jobs.getProviderID", query = "SELECT j FROM Jobs j WHERE j.providerId = :providerId")})
 
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class Jobs implements Serializable {
 
     @Size(max = 255)

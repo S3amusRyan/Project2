@@ -21,6 +21,11 @@ import java.security.NoSuchAlgorithmException;
 
 @Named(value = "loginView")
 @SessionScoped
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class LoginView implements Serializable {
 
 	private static final long serialVersionUID = 3254181235309041386L;

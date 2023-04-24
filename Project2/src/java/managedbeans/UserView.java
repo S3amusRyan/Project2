@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author emmett
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
  */
 public class UserView implements Serializable {
     

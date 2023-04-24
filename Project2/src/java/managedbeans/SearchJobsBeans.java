@@ -14,6 +14,10 @@ import jakarta.annotation.Resource;
 @Named(value = "searchJobsBeans")
 @SessionScoped
 
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class SearchJobsBeans implements Serializable {
     
     private static final long serialVersionUID = 4685823449195612778L;

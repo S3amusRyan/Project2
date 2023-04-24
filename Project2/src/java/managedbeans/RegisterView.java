@@ -14,6 +14,11 @@ import jakarta.inject.Named;
 
 @Named(value = "registerView")
 @SessionScoped
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class RegisterView implements Serializable {
 
 	private static final long serialVersionUID = 1685823449195612778L;

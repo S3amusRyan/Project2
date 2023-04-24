@@ -6,6 +6,10 @@ import java.security.NoSuchAlgorithmException;
 
 import jakarta.xml.bind.DatatypeConverter;
 
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public final class AuthenticationUtils {
 	/**
 	 * Returns SHA-256 hash of the string

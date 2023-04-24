@@ -27,6 +27,11 @@ public class UserEJB {
     private Freelancer freelancer;
     private Jobs jobs;
     
+    
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
     public User createUser(User user, String userType) {
             /**
              * Creates a new user, persists it in the database

@@ -11,6 +11,11 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name="user_groups")
 @XmlRootElement
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class Group implements Serializable {
 
 	private static final long serialVersionUID = 1528447384986169065L;

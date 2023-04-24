@@ -18,6 +18,11 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 	@NamedQuery(name = "findUserById", query = "SELECT u FROM User u WHERE u.email = :email")
 })
 @Table(name="users")
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class User implements Serializable {
         
 	private static final long serialVersionUID = -5892169641074303723L;

@@ -10,6 +10,11 @@ import jakarta.inject.Inject;
 
 @Named(value = "createJobsBean")
 @SessionScoped
+
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 public class CreateJobsBean implements Serializable {
     
     @Inject

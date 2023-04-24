@@ -7,30 +7,21 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
-
-
-
+/**
+ *
+ * @author Seamus Ryan, Niall Herarne, Portia Gannon
+ */
 @Stateless
 public class JobEJB {
     @PersistenceContext(unitName = "FormBasedAuthPU")
     private EntityManager em;
     
     public Jobs createJob(Jobs job){
-        /*
-            @param Jobs job
-            Create a new job in the database
-        */
         persist(job);
         return job;
     }
     
-public Jobs editJob(Jobs job, String status, Freelancer freelancer) {
-    /*
-        @param Jobs job
-        @param String status
-        @param String id
-        edit the status and freelancerid of a job in the database
-    */
+public Jobs changeJob(Jobs job, String status, Freelancer freelancer) {
     Jobs updatedJob = em.find(Jobs.class, job.getJobsId());
     if ((updatedJob != null) && ("closed".equals(status))){
         updatedJob.setStatus(status);
@@ -45,15 +36,12 @@ public Jobs editJob(Jobs job, String status, Freelancer freelancer) {
     return updatedJob;
 }
 
+
     public void persist(Object object) {
         em.persist(object);
     }
     
     public List<Jobs> findByKeywords(String keywords){
-        /*
-            @param String keywords
-            Find a job inside the database, searching by keyword
-        */
             TypedQuery<Jobs> query = em.createNamedQuery("Jobs.findByKeywords", Jobs.class);
             query.setParameter("keywords", keywords);
             List<Jobs> jobs = null;
@@ -64,10 +52,6 @@ public Jobs editJob(Jobs job, String status, Freelancer freelancer) {
     }
     
         public List<Jobs> findByID(String ID){
-        /*
-            @param Integer ID
-            Find a job inside the database, searching by its ID
-        */
             TypedQuery<Jobs> query = em.createNamedQuery("Jobs.findByID", Jobs.class);
             int i = 0;
             System.out.println("ID is = " + ID);
@@ -84,11 +68,6 @@ public Jobs editJob(Jobs job, String status, Freelancer freelancer) {
     
     
     public List<Jobs> findByStatus(String status){
-            /*
-                @param String status 
-                Find jobs inside the database by status
-            */
-        
             TypedQuery<Jobs> query = em.createNamedQuery("Jobs.findByStatus", Jobs.class);
             
             query.setParameter("status", status);
