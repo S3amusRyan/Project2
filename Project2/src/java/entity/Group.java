@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="user_groups")
+@Table(name = "user_groups")
 @XmlRootElement
 
 /**
@@ -18,41 +18,77 @@ import jakarta.xml.bind.annotation.XmlRootElement;
  */
 public class Group implements Serializable {
 
-	private static final long serialVersionUID = 1528447384986169065L;
+    private static final long serialVersionUID = 1528447384986169065L;
 
-        public static final String PROVIDER_GROUP = "providers";
-        public static final String FREELANCER_GROUP = "freelancers";
-        public static final String ADMIN_GROUP = "admins";
-	
-	@Id
-        @Basic(optional = false)
-	@Column(name="email", nullable=false, length=255)
-	private String email;
-	
-	@Column(name="groupname", nullable=false, length=32)
-	private String groupname;
-	
-	public Group() {}
+    /**
+     *
+     */
+    public static final String PROVIDER_GROUP = "providers";
 
-	public Group(String email, String groupname) {
-		this.email = email;
-		this.groupname = groupname;
-	}
+    /**
+     *
+     */
+    public static final String FREELANCER_GROUP = "freelancers";
 
-	public String getEmail() {
-		return email;
-	}
+    /**
+     *
+     */
+    public static final String ADMIN_GROUP = "admins";
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    @Id
+    @Basic(optional = false)
+    @Column(name = "email", nullable = false, length = 255)
+    private String email;
 
-	public String getGroupname() {
-		return groupname;
-	}
+    @Column(name = "groupname", nullable = false, length = 32)
+    private String groupname;
 
-	public void setGroupname(String groupname) {
-		this.groupname = groupname;
-	}
+    /**
+     *
+     */
+    public Group() {
+    }
+
+    /**
+     *
+     * @param email
+     * @param groupname
+     */
+    public Group(String email, String groupname) {
+        this.email = email;
+        this.groupname = groupname;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     *
+     * @param email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getGroupname() {
+        return groupname;
+    }
+
+    /**
+     *
+     * @param groupname
+     */
+    public void setGroupname(String groupname) {
+        this.groupname = groupname;
+    }
 
 }

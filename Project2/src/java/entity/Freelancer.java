@@ -43,18 +43,31 @@ public class Freelancer implements Serializable {
     //@Column(name = "Account")
     //private Integer account;
 
+    /**
+     *
+     */
     public Freelancer() {
     }
 
+    /**
+     *
+     * @param name
+     * @param email
+     */
     public Freelancer(String name, String email) {
-        this.name=name;
-        this.email=email;
+        this.name = name;
+        this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
-/*
+
+    /*
     public Integer getAccount() {
         return account;
     }
@@ -62,27 +75,52 @@ public class Freelancer implements Serializable {
     public void setAccount(Integer account) {
         this.account = account;
     }
-*/
+     */
+
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -90,6 +128,11 @@ public class Freelancer implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         if (!(object instanceof Freelancer)) {
@@ -102,9 +145,13 @@ public class Freelancer implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "entity.Freelancer[ id=" + id + " ]";
     }
-    
+
 }

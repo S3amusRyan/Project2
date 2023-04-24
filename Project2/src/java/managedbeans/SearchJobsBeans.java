@@ -19,80 +19,119 @@ import jakarta.annotation.Resource;
  * @author Seamus Ryan, Niall Herarne, Portia Gannon
  */
 public class SearchJobsBeans implements Serializable {
-    
+
     private static final long serialVersionUID = 4685823449195612778L;
-    
+
     @Inject
     private JobEJB jobEJB;
-    
+
     @Inject
     private UserEJB userEJB;
-    
+
     @Resource
     private jakarta.transaction.UserTransaction utx;
     private String keywords;
     private int jobsid;
     private String providerId;
     private String uniqueId;
-    
-    public List<Jobs> findbyKeyword(){
+
+    /**
+     *
+     * @return
+     */
+    public List<Jobs> findbyKeyword() {
         List<Jobs> jobs = null;
         jobs = jobEJB.findByKeywords(keywords);
         return jobs;
     }
-    
-    public List<Jobs> findbyID(){
+
+    /**
+     *
+     * @return
+     */
+    public List<Jobs> findbyID() {
         List<Jobs> jobs = null;
         System.out.println("TEST");
         jobs = jobEJB.findByID(uniqueId);
         return jobs;
     }
-    
-    
-    public List<Jobs> findbyStatus(String status){
+
+    /**
+     *
+     * @param status
+     * @return
+     */
+    public List<Jobs> findbyStatus(String status) {
         List<Jobs> jobs = null;
-        jobs =  jobEJB.findByStatus(status);
-        return jobs;
-    }
-    
-    public List<Jobs> findJobByProviderId(Provider provider) {
-        List<Jobs> jobs = null;
-        //provider = userEJB.findProviderById(providerId); 
-        //System.out.println("Hello, World! = " + providerId );
-        jobs = userEJB.findJobsById(provider); 
+        jobs = jobEJB.findByStatus(status);
         return jobs;
     }
 
+    /**
+     *
+     * @param provider
+     * @return
+     */
+    public List<Jobs> findJobByProviderId(Provider provider) {
+        List<Jobs> jobs = null;
+        jobs = userEJB.findJobsById(provider);
+        return jobs;
+    }
+
+    /**
+     *
+     * @param jobs
+     */
     public void removeJobByProvider(Jobs jobs) {
         userEJB.removeJob(jobs);
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public String getKeywords() {
         return keywords;
     }
 
+    /**
+     *
+     * @param keywords
+     */
     public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUniqueId() {
         return uniqueId;
     }
 
+    /**
+     *
+     * @param uniqueId
+     */
     public void setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
     }
-    
-    
-    
+
+    /**
+     *
+     * @return
+     */
     public String getProviderId() {
         return providerId;
     }
 
+    /**
+     *
+     * @param providerId
+     */
     public void setProviderId(String providerId) {
         this.providerId = providerId;
     }
-    
 
-    
 }

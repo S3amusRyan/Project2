@@ -47,23 +47,42 @@ public class Provider implements Serializable {
     @Column(name = "ID")
     private Integer id;
 
+    /**
+     *
+     */
     public Provider() {
     }
 
+    /**
+     *
+     * @param name
+     * @param email
+     */
     public Provider(String name, String email) {
-        this.name=name;
-        this.email=email;
+        this.name = name;
+        this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -71,6 +90,11 @@ public class Provider implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         if (!(object instanceof Provider)) {
@@ -83,35 +107,62 @@ public class Provider implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "entity.Provider[ id=" + id + " ]";
     }
 
-
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Jobs> getJobsCollection() {
         return jobsCollection;
     }
 
+    /**
+     *
+     * @param jobsCollection
+     */
     public void setJobsCollection(Collection<Jobs> jobsCollection) {
         this.jobsCollection = jobsCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

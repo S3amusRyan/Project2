@@ -26,58 +26,92 @@ import ejb.JobEJB;
  * @author Seamus Ryan, Niall Herarne, Portia Gannon
  */
 public class RemoveView implements Serializable {
-    
+
     private static final long serialVersionUID = 4685823449195612778L;
 
     @Inject
     private UserEJB userEJB;
-    
+
     @Resource
     private jakarta.transaction.UserTransaction utx;
-    
 
     private String email;
-    
+
     @Inject
     private JobEJB jobEJB;
 
-    
+    /**
+     *
+     * @param user
+     */
     public void removeUser(User user) {
         userEJB.remove(user); //Call userEJB class to use the defined entity manager.
-                              //No need to create a new entity manager instance here.
+        //No need to create a new entity manager instance here.
     }
-    
+
+    /**
+     *
+     * @param jobs
+     */
     public void removeJobDescriptions(Jobs jobs) {
         userEJB.removeJob(jobs);
     }
-    
 
+    /**
+     *
+     * @return
+     */
     public User findUserByEmail() {
-        User user= null;
+        User user = null;
         user = userEJB.findUserById(email);
         return user;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public List<Jobs> findJobDescriptionByEmail() {
         Provider provider = null;
         List<Jobs> jobs = null;
-        provider = userEJB.findProviderById(email);   
-        jobs = userEJB.findJobsById(provider); 
+        provider = userEJB.findProviderById(email);
+        jobs = userEJB.findJobsById(provider);
         return jobs;
     }
 
+    /**
+     *
+     * @param user
+     * @param jobs
+     * @param freelancer
+     */
     public void accept(User user, Jobs jobs, Freelancer freelancer) {
-        jobEJB.changeJob(jobs, "closed", freelancer );
+        jobEJB.changeJob(jobs, "closed", freelancer);
     }
+
+    /**
+     *
+     * @param user
+     * @param jobs
+     * @param freelancer
+     */
     public void revoke(User user, Jobs jobs, Freelancer freelancer) {
         jobEJB.changeJob(jobs, "open", freelancer);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
-    
+
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
-    }   
+    }
 }
