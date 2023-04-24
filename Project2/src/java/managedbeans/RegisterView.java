@@ -37,42 +37,36 @@ public class RegisterView implements Serializable {
      * @param event
      */
     public void validatePassword(ComponentSystemEvent event) {
-        /**
-         * Checks password validity.
-         */
-        FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesContext context = FacesContext.getCurrentInstance();
+        UIComponent component = event.getComponent();
 
-        UIComponent components = event.getComponent();
-
-        // get password
-        UIInput uiInputPassword = (UIInput) components.findComponent("password");
+        UIInput uiInputPassword = (UIInput) component.findComponent("password");
         String password = uiInputPassword.getLocalValue() == null ? "" : uiInputPassword.getLocalValue().toString();
-        String passwordId = uiInputPassword.getClientId();
 
-        // get confirm password
-        UIInput uiInputConfirmPassword = (UIInput) components.findComponent("confirmpassword");
+        UIInput uiInputConfirmPassword = (UIInput) component.findComponent("confirmpassword");
         String confirmPassword = uiInputConfirmPassword.getLocalValue() == null ? ""
                 : uiInputConfirmPassword.getLocalValue().toString();
 
-        // Let required="true" do its job.
         if (password.isEmpty() || confirmPassword.isEmpty()) {
             return;
         }
 
+        String passwordId = uiInputPassword.getClientId();
+        String confirmId = uiInputConfirmPassword.getClientId();
+
         if (!password.equals(confirmPassword)) {
-            FacesMessage msg = new FacesMessage("Confirm password does not match password");
-            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            facesContext.addMessage(passwordId, msg);
-            facesContext.renderResponse();
+            FacesMessage message = new FacesMessage("Confirm password does not match password");
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(confirmId, message);
+            context.renderResponse();
         }
 
         if (userEJB.findUserById(email) != null) {
-            FacesMessage msg = new FacesMessage("User with this e-mail already exists");
-            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            facesContext.addMessage(passwordId, msg);
-            facesContext.renderResponse();
+            FacesMessage message = new FacesMessage("User with this e-mail already exists");
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(email, message);
+            context.renderResponse();
         }
-
     }
 
     /**
@@ -80,9 +74,6 @@ public class RegisterView implements Serializable {
      * @return
      */
     public String register() {
-        /**
-         * Registers a user into the database.
-         */
         User user = new User(email, password, name);
         userEJB.createUser(user, userType);
         return "regdone";
