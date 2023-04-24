@@ -1,18 +1,21 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" >
-    <h:head>
-        <title>Freelancer Page</title>
-    </h:head>
-    <h:body>  
-        <h3>Freelancer Name: #{loginView.authenticatedUser.name}</h3>
-	<p>Your user id is #{loginView.authenticatedUser.email}</p>
-        <p>Your current account balance is $0</p>
-	<p>This is a private page, which requires login to access.</p>
-        <h2>List search results for open jobs: </h2>
-        <h:form>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template.xhtml">
+    <ui:define name="title">
+        Freelancer Page
+    </ui:define>
+
+    <ui:define name="content">
+        <h:body>  
+            <h3>Freelancer Name: #{loginView.authenticatedUser.name}</h3>
+            <p>Your user id is #{loginView.authenticatedUser.email}</p>
+            <p>Your current account balance is $0</p>
+            <p>This is a private page, which requires login to access.</p>
+            <h2>List search results for open jobs: </h2>
+
             <h:dataTable value="#{searchJobsBeans.findbyStatus('open')}" var="jobs"
                          border="1" width="300" cellpadding="5">
 
@@ -30,40 +33,34 @@
                     <f:facet name='header'>Description</f:facet>
                         #{jobs.description}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Keywords</f:facet>
                         #{jobs.keywords}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Payment</f:facet>
                         #{jobs.payment}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Status</f:facet>
                         #{jobs.status}    
                 </h:column>
-                
+
                 <h:column>
-                        <f:facet name="header">Accept</f:facet>
-                        <h:commandButton value="Apply" 
-                                         action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
+                    <f:facet name="header">Accept</f:facet>
+                    <h:commandButton value="Apply" 
+                                     action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
+                    </h:commandButton>
                 </h:column>
-                
-                <h:column>
-                        <f:facet name="header">Reject</f:facet>
-                        <h:commandButton value="Revoke" 
-                                         action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
-                </h:column>
+
             </h:dataTable>
-        </h:form>
-        
-        <h2>Jobs you have applied for: </h2>
-        <h:form>
+
+
+            <h2>Jobs you have applied for: </h2>
+
             <h:dataTable value="#{searchJobsBeans.findbyStatus('closed')}" var="jobs"
                          border="1" width="300" cellpadding="5">
 
@@ -81,56 +78,55 @@
                     <f:facet name='header'>Description</f:facet>
                         #{jobs.description}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Keywords</f:facet>
                         #{jobs.keywords}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Payment</f:facet>
                         #{jobs.payment}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Status</f:facet>
                         #{jobs.status}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>freelancerId</f:facet>
                         #{jobs.freelancerId}    
                 </h:column>
-                
+
                 <h:column>
-                        <f:facet name="header">Accept</f:facet>
-                        <h:commandButton value="Apply" 
-                                         action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
+                    <f:facet name="header">Accept</f:facet>
+                    <h:commandButton value="Apply" 
+                                     action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
+                    </h:commandButton>
                 </h:column>
-                
+
                 <h:column>
-                        <f:facet name="header">Reject</f:facet>
-                        <h:commandButton value="Revoke" 
-                                         action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
+                    <f:facet name="header">Reject</f:facet>
+                    <h:commandButton value="Revoke" 
+                                     action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
+                    </h:commandButton>
                 </h:column>
             </h:dataTable>
-            
 
 
-        </h:form>        
-        
-        <h2>Search by keywords for jobs</h2>        
-        <h:form>
-            <h:panelGrid columns ="2">
-                <h:inputText value="#{searchJobsBeans.keywords}"/>
-                <h:commandButton value="Search"/>
-                <br/>
-            </h:panelGrid>             
-	</h:form>
-        
-        <h:form>
+
+
+
+            <h2>Search by keywords for jobs</h2>        
+
+
+            <h:inputText value="#{searchJobsBeans.keywords}"/>
+            <h:commandButton value="Search"/>
+            <br/>
+
+
+
             <h:dataTable value="#{searchJobsBeans.findbyKeyword()}" var="jobs"
                          border="1" width="300" cellpadding="5">
                 <h:column>
@@ -147,49 +143,47 @@
                     <f:facet name='header'>Description</f:facet>
                         #{jobs.description}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Keywords</f:facet>
                         #{jobs.keywords}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Payment</f:facet>
                         #{jobs.payment}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Status</f:facet>
                         #{jobs.status}    
                 </h:column>
-                
+
                 <h:column>
-                        <f:facet name="header">Accept</f:facet>
-                        <h:commandButton value="Apply" 
-                                         action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
+                    <f:facet name="header">Accept</f:facet>
+                    <h:commandButton value="Apply" action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
+                    </h:commandButton>
                 </h:column>
-                
+
                 <h:column>
-                        <f:facet name="header">Reject</f:facet>
-                        <h:commandButton value="Revoke" 
-                                         action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
+                    <f:facet name="header">Reject</f:facet>
+                    <h:commandButton value="Revoke" 
+                                     action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
+                    </h:commandButton>
                 </h:column>
                 <br></br>
             </h:dataTable>
-        </h:form>
-        
-        <h2>Search by ID for job</h2>        
-        <h:form>
-            <h:panelGrid columns ="2">
-                <h:inputText value="#{searchJobsBeans.uniqueId}"/>
-                <h:commandButton value="Search"/>
-                <br/>
-            </h:panelGrid>             
-	</h:form>
-        
-        <h:form>
+
+
+            <h2>Search by ID for job</h2>        
+
+
+            <h:inputText value="#{searchJobsBeans.uniqueId}"/>
+            <h:commandButton value="Search"/>
+            <br/>
+
+
+
             <h:dataTable value="#{searchJobsBeans.findbyID()}" var="jobs"
                          border="1" width="300" cellpadding="5">
                 <h:column>
@@ -206,43 +200,37 @@
                     <f:facet name='header'>Description</f:facet>
                         #{jobs.description}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Keywords</f:facet>
                         #{jobs.keywords}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Payment</f:facet>
                         #{jobs.payment}    
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name='header'>Status</f:facet>
                         #{jobs.status}    
                 </h:column>
-                
+
                 <h:column>
-                        <f:facet name="header">Accept</f:facet>
-                        <h:commandButton value="Apply" 
-                                         action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
-                </h:column>
-                
-                <h:column>
-                        <f:facet name="header">Reject</f:facet>
-                        <h:commandButton value="Revoke" 
-                                         action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
-                        </h:commandButton>
+                    <f:facet name="header">Reject</f:facet>
+                    <h:commandButton value="Revoke" 
+                                     action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
+                    </h:commandButton>
                 </h:column>
                 <br></br>
             </h:dataTable>
-        </h:form>
 
 
-        <h:form>
-		<h:commandLink action="#{loginView.logout}" value="Logout" />
-	</h:form>
-    </h:body>
-</html>
+
+
+            <h:commandLink action="#{loginView.logout}" value="Logout" style="color: blue;"/>
+
+        </h:body>
+    </ui:define>
+</ui:composition>
 

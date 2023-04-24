@@ -1,34 +1,9 @@
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
-		xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<title>login</title>
-</h:head>
-<h:body>
-	<h:form>
-		<h3>Sign in</h3>
-		<h:panelGrid columns="2">
-                              
-                    <h:outputLabel for="email">E-Mail:</h:outputLabel>
-                    <h:inputText id="email" value="#{loginView.email}"></h:inputText>
-
-                    <h:outputLabel for="password">Password:</h:outputLabel>
-                    <h:inputSecret id="password" value="#{loginView.password}"></h:inputSecret>
-                    <br></br>
-                    <h:commandButton action="#{loginView.login}" value="Login"></h:commandButton>
-                    <br></br>
-                    <br></br>
-                    <h:commandButton value="Home" action="index.xhtml"/><h:outputText/>
-		</h:panelGrid>
-	</h:form>
-</h:body>
-</html>-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<ui:composition template="template.xhtml">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="template.xhtml">
     <ui:define name="title">
         Login
     </ui:define>
@@ -56,4 +31,3 @@
 </h:body>
     </ui:define>
 </ui:composition>
-</html>

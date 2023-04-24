@@ -8,7 +8,6 @@
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/src/conf/persistence.xml</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/src/java/entity/Jobs.java</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/freelancer/privatepage.xhtml</file>
-            <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/index.xhtml</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/signin.xhtml</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/src/java/validators/EmailValidator.java</file>
@@ -23,6 +22,7 @@
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/admin/adminpage.xhtml</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/provider/regdone.xhtml</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/template.xhtml</file>
+            <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/freelancer/styles.css</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/src/java/ejb/UserEJB.java</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/web/regdone.xhtml</file>
             <file>file:/C:/Users/srsea/Documents/GitHub/Project2/Project2/src/java/ejb/JobEJB.java</file>

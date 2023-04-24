@@ -105,6 +105,7 @@ public class LoginView implements Serializable {
                  */ 
                 FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+                System.out.println("logging out");
 		try {
 			this.user = null;
 			request.logout();

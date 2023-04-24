@@ -65,7 +65,8 @@ public Jobs editJob(Jobs job, String status){//, Freelancer freelancer) {
         */
             TypedQuery<Jobs> query = em.createNamedQuery("Jobs.findByID", Jobs.class);
             int i = 0;
-            if(ID != null){
+            System.out.println("ID is = " + ID);
+            if(ID != null && !ID.equals("")){
                 i = Integer.parseInt(ID);
             }   
             query.setParameter("jobsId", i);
