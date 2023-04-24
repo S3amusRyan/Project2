@@ -45,7 +45,6 @@ public class LoginView implements Serializable {
                  */
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-                this.generateAdmin(); //generates a default admin if required
                 
                 this.user = userEJB.findUserById(email);
                 
@@ -119,12 +118,6 @@ public class LoginView implements Serializable {
 		return "/signin?faces-redirect=true";
 	}
         
-        public void generateAdmin() {
-            if(userEJB.findUserById(User.getDEF_ADMIN_EMAIL())==null){
-                User user = new User(User.getDEF_ADMIN_EMAIL(), User.getDEF_PWD(), User.getDEF_NAME());
-                userEJB.createUser(user, "3");
-            }
-        }   
         
 	public User getAuthenticatedUser() {
 		return user;

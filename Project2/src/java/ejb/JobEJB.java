@@ -24,7 +24,7 @@ public class JobEJB {
         return job;
     }
     
-public Jobs editJob(Jobs job, String status){//, Freelancer freelancer) {
+public Jobs editJob(Jobs job, String status, Freelancer freelancer) {
     /*
         @param Jobs job
         @param String status
@@ -32,9 +32,14 @@ public Jobs editJob(Jobs job, String status){//, Freelancer freelancer) {
         edit the status and freelancerid of a job in the database
     */
     Jobs updatedJob = em.find(Jobs.class, job.getJobsId());
-    if (updatedJob != null){
+    if ((updatedJob != null) && ("closed".equals(status))){
         updatedJob.setStatus(status);
-        //updatedJob.setFreelancerId(freelancer);
+        updatedJob.setFreelancerId(freelancer);
+        em.merge(updatedJob);
+    }
+    if ((updatedJob != null) && ("open".equals(status))){
+        updatedJob.setStatus(status);
+        updatedJob.removeFreelancerId();
         em.merge(updatedJob);
     }
     return updatedJob;

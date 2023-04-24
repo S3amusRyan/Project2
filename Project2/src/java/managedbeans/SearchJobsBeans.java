@@ -20,6 +20,8 @@ public class SearchJobsBeans implements Serializable {
     
     @Inject
     private JobEJB jobEJB;
+    
+    @Inject
     private UserEJB userEJB;
     
     @Resource
@@ -49,10 +51,10 @@ public class SearchJobsBeans implements Serializable {
         return jobs;
     }
     
-    public List<Jobs> findJobByProviderId() {
-        Provider provider = null;
+    public List<Jobs> findJobByProviderId(Provider provider) {
         List<Jobs> jobs = null;
-        provider = userEJB.findProviderById(providerId); 
+        //provider = userEJB.findProviderById(providerId); 
+        //System.out.println("Hello, World! = " + providerId );
         jobs = userEJB.findJobsById(provider); 
         return jobs;
     }

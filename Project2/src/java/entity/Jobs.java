@@ -174,4 +174,8 @@ public class Jobs implements Serializable {
         this.freelancerId = freelancerId;
     }
     
+    public void removeFreelancerId() {
+        this.freelancerId = null;
+    }
+    
 }

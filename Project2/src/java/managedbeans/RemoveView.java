@@ -61,11 +61,11 @@ public class RemoveView implements Serializable {
         return jobs;
     }
 
-    public void accept(User user, Jobs jobs) {
-        jobEJB.editJob(jobs, "closed");//, freelancer );
+    public void accept(User user, Jobs jobs, Freelancer freelancer) {
+        jobEJB.editJob(jobs, "closed", freelancer );
     }
-    public void revoke(User user, Jobs jobs) {
-        jobEJB.editJob(jobs, "open");//, freelancer);
+    public void revoke(User user, Jobs jobs, Freelancer freelancer) {
+        jobEJB.editJob(jobs, "open", freelancer);
     }
 
     public String getEmail() {

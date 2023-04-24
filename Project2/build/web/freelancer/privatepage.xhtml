@@ -11,9 +11,9 @@
     <ui:define name="content">
         <h:body>  
             <h3>Freelancer Name: #{loginView.authenticatedUser.name}</h3>
-            <p>Your user id is #{loginView.authenticatedUser.email}</p>
+            <p>Your email is: #{loginView.authenticatedUser.email}</p>
             <p>Your current account balance is $0</p>
-            <p>This is a private page, which requires login to access.</p>
+            <p>This page is private.</p>
             <h2>List search results for open jobs: </h2>
 
             <h:dataTable value="#{searchJobsBeans.findbyStatus('open')}" var="jobs"
@@ -52,7 +52,7 @@
                 <h:column>
                     <f:facet name="header">Accept</f:facet>
                     <h:commandButton value="Apply" 
-                                     action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
+                                     action="#{removeView.accept(loginView.authenticatedUser, jobs, loginView.getAuthenticatedFreelancer())}">
                     </h:commandButton>
                 </h:column>
 
@@ -100,16 +100,9 @@
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Accept</f:facet>
-                    <h:commandButton value="Apply" 
-                                     action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
-                    </h:commandButton>
-                </h:column>
-
-                <h:column>
                     <f:facet name="header">Reject</f:facet>
                     <h:commandButton value="Revoke" 
-                                     action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
+                                     action="#{removeView.revoke(loginView.authenticatedUser, jobs, loginView.getAuthenticatedFreelancer())}">
                     </h:commandButton>
                 </h:column>
             </h:dataTable>
@@ -159,18 +152,6 @@
                         #{jobs.status}    
                 </h:column>
 
-                <h:column>
-                    <f:facet name="header">Accept</f:facet>
-                    <h:commandButton value="Apply" action="#{removeView.accept(loginView.authenticatedUser, jobs)}">
-                    </h:commandButton>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">Reject</f:facet>
-                    <h:commandButton value="Revoke" 
-                                     action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
-                    </h:commandButton>
-                </h:column>
                 <br></br>
             </h:dataTable>
 
@@ -216,12 +197,6 @@
                         #{jobs.status}    
                 </h:column>
 
-                <h:column>
-                    <f:facet name="header">Reject</f:facet>
-                    <h:commandButton value="Revoke" 
-                                     action="#{removeView.revoke(loginView.authenticatedUser, jobs)}">
-                    </h:commandButton>
-                </h:column>
                 <br></br>
             </h:dataTable>
 
